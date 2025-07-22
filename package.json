@@ -17,7 +17,10 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
     "@iconify-json/carbon": "catalog:icons",
+    "@iconify-json/oi": "^1.2.1",
     "@iconify-json/twemoji": "catalog:icons",
+    "@nuxt-themes/docus": "^1.15.1",
+    "@nuxt-themes/typography": "^1.0.1",
     "@nuxt/devtools": "catalog:build",
     "@nuxt/eslint": "catalog:build",
     "@nuxtjs/color-mode": "catalog:build",
@@ -44,6 +47,7 @@
     "vite": "catalog:build"
   },
   "dependencies": {
-    "@nuxt/content": "^3.6.3"
+    "@nuxt/content": "^3.6.3",
+    "@nuxtjs/mdc": "^0.17.2"
   }
 }

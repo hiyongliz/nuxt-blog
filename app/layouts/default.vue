@@ -14,9 +14,13 @@ import DarkToggle from '~/components/DarkToggle.vue'
     </div>
     <div h-6 w-full class="splitter" />
     <div flex="~" justify-center>
-      <div w-800px>
+      <div w-770px>
         <slot />
       </div>
+    </div>
+
+    <div flex="~" mt-4 h-16 w-full items-center justify-center>
+      CC BY-NC-SA 4.0
     </div>
   </main>
 </template>

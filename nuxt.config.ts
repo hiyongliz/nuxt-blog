@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     '@nuxt/content',
+    '@nuxtjs/mdc',
   ],
 
   devtools: {
@@ -34,12 +35,35 @@ export default defineNuxtConfig({
     },
   },
 
+  css: [
+    '~/assets/prose.css',
+  ],
+
   colorMode: {
     classSuffix: '',
   },
 
   content: {
     experimental: { nativeSqlite: true },
+    build: {
+      markdown: {
+        toc: {
+          depth: 3, // include h3 headings
+        },
+        highlight: {
+          // Theme used in all color schemes.
+          theme: 'github-light',
+          langs: [
+            'python',
+          ],
+        },
+      },
+      renderer: {
+        h1: true,
+        h2: true,
+        h3: true,
+      },
+    },
   },
 
   future: {

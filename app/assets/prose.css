@@ -1,0 +1,54 @@
+.prose {
+  color: var(--fg);
+  max-width: var(--prose-max-width);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.prose h2 {
+  color: var(--fg-deep);
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+}
+
+.prose blockquote {
+  font-weight: 500;
+  font-style: italic;
+  color: inherit;
+  border-left-width: 0.25rem;
+  border-color: rgba(125, 125, 125, 0.3);
+  quotes: '\201C' '\201D' '\2018' '\2019';
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-left: 1em;
+}
+.prose blockquote p:first-of-type::before {
+  content: open-quote;
+}
+.prose blockquote p:last-of-type::after {
+  content: close-quote;
+}
+
+.prose {
+  & .speech p:first-of-type::before {
+    content: open-quote;
+    margin-top: 10px;
+  }
+
+  & .speech p:last-of-type::after {
+    content: close-quote;
+  }
+
+  & .speech p {
+    font-weight: 500;
+    font-style: italic;
+    color: inherit;
+    /* border-left-width: 0.25rem;
+    border-color: rgba(125, 125, 125, 0.3); */
+    quotes: '\201C' '\201D' '\2018' '\2019';
+  }
+}
+
