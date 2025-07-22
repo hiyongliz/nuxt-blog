@@ -14,13 +14,17 @@
     "lint": "eslint .",
     "typecheck": "nuxt typecheck"
   },
+  "dependencies": {
+    "@nuxt/content": "catalog:",
+    "@nuxtjs/mdc": "catalog:"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
     "@iconify-json/carbon": "catalog:icons",
-    "@iconify-json/oi": "^1.2.1",
+    "@iconify-json/oi": "catalog:",
     "@iconify-json/twemoji": "catalog:icons",
-    "@nuxt-themes/docus": "^1.15.1",
-    "@nuxt-themes/typography": "^1.0.1",
+    "@nuxt-themes/docus": "catalog:",
+    "@nuxt-themes/typography": "catalog:",
     "@nuxt/devtools": "catalog:build",
     "@nuxt/eslint": "catalog:build",
     "@nuxtjs/color-mode": "catalog:build",
@@ -45,9 +49,5 @@
     "nuxt": "catalog:build",
     "unplugin": "catalog:build",
     "vite": "catalog:build"
-  },
-  "dependencies": {
-    "@nuxt/content": "^3.6.3",
-    "@nuxtjs/mdc": "^0.17.2"
   }
 }

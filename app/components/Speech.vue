@@ -1,42 +1,19 @@
 <script setup lang="ts">
 const props = defineProps<{
-    icon?: string
+  author?: string
+  datetime?: string
 }>()
-
-const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
 </script>
 
 <template>
-    <div class="prose">
-        <slot class="speech" />
+  <div class="prose">
+    <slot />
+    <div flex="~" gap-1 items-center mb-2>
+      <div i-carbon:subtract-large />
+      <span font-bold text="#0303bb">
+        {{ props.author }}
+      </span>
     </div>
+    <div mb-4>{{ datetime }}</div>
+  </div>
 </template>
-
-<style scoped>
-.quote {
-    font-size: 1.2rem;
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-    color: var(--c-text-2);
-
-    :deep(p) {
-        margin: 0;
-    }
-}
-
-.icon-line {
-    position: relative;
-    opacity: 0.5;
-    min-height: 0.5em;
-    margin-bottom: -0.5em;
-    mask: linear-gradient(#fff, transparent);
-    font-size: 4rem;
-    transition: all 0.2s;
-    z-index: -1;
-
-    :hover > & {
-        opacity: 1;
-        transform: translateY(-0.5rem);
-    }
-}
-</style>

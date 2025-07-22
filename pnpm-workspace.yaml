@@ -1,4 +1,10 @@
 packages: []
+catalog:
+  '@iconify-json/oi': ^1.2.1
+  '@nuxt-themes/docus': ^1.15.1
+  '@nuxt-themes/typography': ^1.0.1
+  '@nuxt/content': ^3.6.3
+  '@nuxtjs/mdc': ^0.17.2
 catalogs:
   build:
     '@nuxt/devtools': ^2.6.2

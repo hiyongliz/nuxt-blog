@@ -2,7 +2,7 @@
   color: var(--fg);
   max-width: var(--prose-max-width);
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.5;
 }
 
 .prose h2 {
@@ -34,21 +34,10 @@
 
 .prose {
   & .speech p:first-of-type::before {
-    content: open-quote;
-    margin-top: 10px;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 512 512'%3E%3C!-- Icon from IonIcons by Ben Sperry - https://github.com/ionic-team/ionicons/blob/main/LICENSE --%3E%3Cpath d='M192 64c-40.646 0-72.483 11.229-94.627 33.373C75.229 119.517 64 151.354 64 192v256h160V192h-96c0-23.056 4.922-39.666 14.627-49.373C152.334 132.922 168.944 128 192 128' fill='%23533fe9'/%3E%3Cpath d='M416 64c-40.646 0-72.483 11.229-94.627 33.373C299.229 119.517 288 151.354 288 192v256h160V192h-96c0-23.056 4.922-39.666 14.627-49.373C376.334 132.922 392.944 128 416 128' fill='%23533fe9'/%3E%3C/svg%3E");
   }
 
   & .speech p:last-of-type::after {
-    content: close-quote;
-  }
-
-  & .speech p {
-    font-weight: 500;
-    font-style: italic;
-    color: inherit;
-    /* border-left-width: 0.25rem;
-    border-color: rgba(125, 125, 125, 0.3); */
-    quotes: '\201C' '\201D' '\2018' '\2019';
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 512 512'%3E%3C!-- Icon from IonIcons by Ben Sperry - https://github.com/ionic-team/ionicons/blob/main/LICENSE --%3E%3Cpath d='M96.4 416h77.1l50.9-96.6V96h-160v223.4h77.1L96.4 416zm224 0h77.1l50-96.6V96H288.4v223.4h82l-50 96.6z' fill='%23533fe9'/%3E%3C/svg%3E");
   }
 }
-
