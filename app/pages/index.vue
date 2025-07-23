@@ -82,7 +82,7 @@ function getReadingTime(post: any) {
           <div class="mb-3">
             <div class="mb-1 flex items-center justify-between">
               <h2 class="text-body text-2xl leading-tight font-semibold">
-                <a :href="post.path" class="link-subtle transition-colors hover:text-blue-600">
+                <a :href="post.path" class="link-subtle transition-colors hover:text-blue-600" target="_self">
                   {{ post.title }}
                 </a>
               </h2>
