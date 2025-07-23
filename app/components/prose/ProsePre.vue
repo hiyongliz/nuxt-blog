@@ -28,30 +28,27 @@ defineProps({
 </script>
 
 <template>
-  <div class="prose">
-    <pre :class="$props.class" bg-white><slot /></pre>
+  <div class="code-simple">
+    <pre :class="$props.class"><slot /></pre>
   </div>
 </template>
 
-<style>
-pre code .line {
-  display: block;
+<style scoped>
+.code-simple {
+  @apply my-4;
 }
 
-.prose pre {
-  color: #e5e7eb;
-  overflow-x: auto;
-  font-size: 0.875em;
-  line-height: 1.7142857;
-  margin-top: 1.7142857em;
-  margin-bottom: 1.7142857em;
-  border-radius: 0.375rem;
-  padding-top: 0.8571429em;
-  padding-right: 1.1428571em;
-  padding-bottom: 0.8571429em;
-  padding-left: 1.1428571em;
+.code-simple pre {
+  @apply bg-gray-50 dark:bg-gray-900;
+  @apply border border-gray-200 dark:border-gray-700;
+  @apply rounded p-4;
+  @apply overflow-x-auto;
+  @apply text-sm;
+  @apply font-mono;
+  @apply leading-relaxed;
 }
-.prose pre code {
+
+.code-simple :deep(pre code) {
   background-color: transparent;
   border-width: 0;
   border-radius: 0;
@@ -62,10 +59,9 @@ pre code .line {
   font-family: inherit;
   line-height: inherit;
 }
-.prose pre code::before {
-  content: none;
-}
-.prose pre code::after {
+
+.code-simple :deep(pre code::before),
+.code-simple :deep(pre code::after) {
   content: none;
 }
 </style>

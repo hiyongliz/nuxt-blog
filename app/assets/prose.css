@@ -1,3 +1,24 @@
+/* 简洁的 CSS 变量定义 */
+:root {
+  /* 基础颜色 */
+  --fg: #374151;
+  --fg-muted: #6b7280;
+  --bg: #ffffff;
+  --border: #e5e7eb;
+
+  /* 尺寸 */
+  --prose-max-width: 65ch;
+}
+
+/* 暗色主题 */
+.dark {
+  --fg: #d1d5db;
+  --fg-muted: #9ca3af;
+  --bg: #111827;
+  --border: #374151;
+}
+
+/* 简洁的 Prose 样式 */
 .prose {
   color: var(--fg);
   max-width: var(--prose-max-width);
@@ -5,39 +26,91 @@
   line-height: 1.5;
 }
 
-.prose h2 {
-  color: var(--fg-deep);
+.prose h1 {
   font-weight: 700;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1.2;
+  color: var(--fg);
+}
+
+.prose h2 {
+  font-weight: 600;
   font-size: 1.5em;
   margin-top: 2em;
   margin-bottom: 1em;
-  line-height: 1.3333333;
+  line-height: 1.3;
+  color: var(--fg);
 }
+
+.prose h3 {
+  font-weight: 600;
+  font-size: 1.25em;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  line-height: 1.4;
+  color: var(--fg);
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  color: var(--fg);
+}
+
+
 
 .prose blockquote {
-  font-weight: 500;
   font-style: italic;
-  color: inherit;
-  border-left-width: 0.25rem;
-  border-color: rgba(125, 125, 125, 0.3);
-  quotes: '\201C' '\201D' '\2018' '\2019';
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
+  color: var(--fg-muted);
+  border-left: 4px solid #e5e7eb;
+  margin: 1.6em 0;
   padding-left: 1em;
 }
-.prose blockquote p:first-of-type::before {
-  content: open-quote;
-}
-.prose blockquote p:last-of-type::after {
-  content: close-quote;
+
+.dark .prose blockquote {
+  border-left-color: #374151;
 }
 
-.prose {
-  & .speech p:first-of-type::before {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 512 512'%3E%3C!-- Icon from IonIcons by Ben Sperry - https://github.com/ionic-team/ionicons/blob/main/LICENSE --%3E%3Cpath d='M192 64c-40.646 0-72.483 11.229-94.627 33.373C75.229 119.517 64 151.354 64 192v256h160V192h-96c0-23.056 4.922-39.666 14.627-49.373C152.334 132.922 168.944 128 192 128' fill='%23533fe9'/%3E%3Cpath d='M416 64c-40.646 0-72.483 11.229-94.627 33.373C299.229 119.517 288 151.354 288 192v256h160V192h-96c0-23.056 4.922-39.666 14.627-49.373C376.334 132.922 392.944 128 416 128' fill='%23533fe9'/%3E%3C/svg%3E");
-  }
+.prose code {
+  color: #dc2626;
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
 
-  & .speech p:last-of-type::after {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 512 512'%3E%3C!-- Icon from IonIcons by Ben Sperry - https://github.com/ionic-team/ionicons/blob/main/LICENSE --%3E%3Cpath d='M96.4 416h77.1l50.9-96.6V96h-160v223.4h77.1L96.4 416zm224 0h77.1l50-96.6V96H288.4v223.4h82l-50 96.6z' fill='%23533fe9'/%3E%3C/svg%3E");
-  }
+.dark .prose code {
+  color: #fca5a5;
+  background-color: #374151;
+}
+
+.prose pre {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+.dark .prose pre {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.prose ul, .prose ol {
+  margin: 1.25em 0;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin: 0.5em 0;
 }

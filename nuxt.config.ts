@@ -37,6 +37,7 @@ export default defineNuxtConfig({
 
   css: [
     '~/assets/prose.css',
+    '~/assets/global.css',
   ],
 
   colorMode: {
@@ -52,7 +53,11 @@ export default defineNuxtConfig({
         },
         highlight: {
           // Theme used in all color schemes.
-          theme: 'github-light',
+          theme: {
+            default: 'github-light',
+            dark: 'github-dark',
+            light: 'github-light',
+          },
           langs: [
             'python',
           ],

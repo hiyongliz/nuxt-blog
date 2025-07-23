@@ -3,30 +3,46 @@ import DarkToggle from '~/components/DarkToggle.vue'
 </script>
 
 <template>
-  <main flex="~ col" w-full justify-center>
-    <div flex="~" gap-110 h-14 w-full items-center justify-center>
-      <a text-4xl href="/">Lazy's Webblog</a>
-      <div flex="~" gap-4 items-center>
-        <a href="/about">About</a>
-        <a i-carbon-logo-github href="/about" target="_blank" />
-        <DarkToggle />
-      </div>
-    </div>
-    <div h-6 w-full class="splitter" />
-    <div flex="~" justify-center>
-      <div w-770px>
-        <slot />
-      </div>
-    </div>
+  <div class="bg-white min-h-screen dark:bg-gray-900">
+    <!-- 简洁的头部 -->
+    <header class="bg-white dark:bg-gray-900">
+      <div class="py-4 container">
+        <div class="flex items-center justify-between">
+          <!-- 网站标题 -->
+          <h1 class="text-body text-4xl font-bold">
+            <a href="/" class="link-subtle">Lazy's Webblog</a>
+          </h1>
 
-    <div flex="~" mt-4 h-16 w-full items-center justify-center>
-      CC BY-NC-SA 4.0
-    </div>
-  </main>
+          <!-- 简单的导航 -->
+          <nav class="flex items-center space-x-4">
+            <a href="/about" class="link-subtle">About</a>
+            <a href="https://github.com/hiyongliz" target="_blank" class="link-subtle" aria-label="GitHub">
+              <div class="i-carbon-logo-github h-4 w-4" />
+            </a>
+            <DarkToggle />
+          </nav>
+        </div>
+      </div>
+      <div border-b border-gray-200 container dark:border-gray-700 />
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="py-8 container">
+      <slot />
+    </main>
+
+    <!-- 简洁的页脚 -->
+    <footer class="mt-6">
+      <div class="py-6 container">
+        <div class="text-muted text-sm text-center">
+          <p>
+            © 2025 Lazy's Webblog •
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="link">
+              CC BY-NC-SA 4.0
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
-
-<style>
-.splitter {
-  background: linear-gradient(to bottom, rgb(33, 147, 176), rgb(109, 213, 237));
-}
-</style>

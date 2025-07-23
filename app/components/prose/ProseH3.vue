@@ -21,12 +21,11 @@ const generate = computed(() => props.id && ((typeof headings?.anchorLinks === '
 
 <style scoped>
 .lzh3 {
-  color: inherit;
+  color: var(--fg);
   font-weight: 600;
   font-size: 1.25em;
   margin-top: 1.6em;
   margin-bottom: 0.6em;
-  line-height: 1.6;
-  opacity: 0.7;
+  line-height: 1.4;
 }
 </style>
