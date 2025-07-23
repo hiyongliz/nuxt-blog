@@ -30,6 +30,22 @@ catalogs:
     unocss:
       specifier: ^66.3.3
       version: 66.3.3
+  default:
+    '@iconify-json/oi':
+      specifier: ^1.2.1
+      version: 1.2.1
+    '@nuxt-themes/docus':
+      specifier: ^1.15.1
+      version: 1.15.1
+    '@nuxt-themes/typography':
+      specifier: ^1.0.1
+      version: 1.0.1
+    '@nuxt/content':
+      specifier: ^3.6.3
+      version: 3.6.3
+    '@nuxtjs/mdc':
+      specifier: ^0.17.2
+      version: 0.17.2
   dev:
     '@antfu/eslint-config':
       specifier: ^4.17.0
@@ -76,10 +92,10 @@ importers:
   .:
     dependencies:
       '@nuxt/content':
-        specifier: ^3.6.3
+        specifier: 'catalog:'
         version: 3.6.3(magicast@0.3.5)(vue-component-type-helpers@2.2.12)
       '@nuxtjs/mdc':
-        specifier: ^0.17.2
+        specifier: 'catalog:'
         version: 0.17.2(magicast@0.3.5)
     devDependencies:
       '@antfu/eslint-config':
@@ -89,16 +105,16 @@ importers:
         specifier: catalog:icons
         version: 1.2.10
       '@iconify-json/oi':
-        specifier: ^1.2.1
+        specifier: 'catalog:'
         version: 1.2.1
       '@iconify-json/twemoji':
         specifier: catalog:icons
         version: 1.2.2
       '@nuxt-themes/docus':
-        specifier: ^1.15.1
+        specifier: 'catalog:'
         version: 1.15.1(@netlify/blobs@9.1.2)(db0@0.3.2)(ioredis@5.6.1)(jwt-decode@4.0.0)(magicast@0.3.5)(nuxt@4.0.0(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.1)(@types/node@22.15.29)(@vue/compiler-sfc@3.5.17)(db0@0.3.2)(eslint@9.31.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.45.1)(terser@5.39.0)(typescript@5.8.3)(vite@7.0.4(@types/node@22.15.29)(jiti@2.4.2)(terser@5.39.0)(yaml@2.8.0))(vue-tsc@3.0.1(typescript@5.8.3))(yaml@2.8.0))(postcss@8.5.6)(vue-tsc@3.0.1(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))
       '@nuxt-themes/typography':
-        specifier: ^1.0.1
+        specifier: 'catalog:'
         version: 1.0.1(magicast@0.3.5)(postcss@8.5.6)(vue-tsc@3.0.1(typescript@5.8.3))(vue@3.5.17(typescript@5.8.3))
       '@nuxt/devtools':
         specifier: ^2.6.2
@@ -13791,7 +13807,7 @@ snapshots:
       debug: 4.4.1
       decode-named-character-reference: 1.0.2
       devlop: 1.1.0
-      micromark-core-commonmark: 2.0.2
+      micromark-core-commonmark: 2.0.3
       micromark-factory-space: 2.0.1
       micromark-util-character: 2.1.1
       micromark-util-chunked: 2.0.1
@@ -13803,7 +13819,7 @@ snapshots:
       micromark-util-sanitize-uri: 2.0.1
       micromark-util-subtokenize: 2.0.4
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
     transitivePeerDependencies:
       - supports-color
 
