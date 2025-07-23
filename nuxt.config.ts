@@ -1,4 +1,4 @@
-// import { pwa } from './app/config/pwa'
+import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
@@ -109,5 +109,5 @@ export default defineNuxtConfig({
   // gtag: {
   //   id: 'G-XXH0BFB7CB',
   // },
-  // pwa,
+  pwa,
 })

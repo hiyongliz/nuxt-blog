@@ -8,7 +8,7 @@ useHead({
 
 <template>
   <NuxtLoadingIndicator color="#4ade80" :height="2" />
-  <!-- <VitePwaManifest /> -->
+  <VitePwaManifest />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
