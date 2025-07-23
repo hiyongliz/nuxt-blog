@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/content',
     '@nuxtjs/mdc',
-    'nuxt-gtag',
+    // 'nuxt-gtag',
   ],
 
   devtools: {
@@ -106,9 +106,8 @@ export default defineNuxtConfig({
     },
   },
 
-  gtag: {
-    id: 'G-XXH0BFB7CB',
-  },
-
+  // gtag: {
+  //   id: 'G-XXH0BFB7CB',
+  // },
   // pwa,
 })
