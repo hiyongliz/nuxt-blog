@@ -48,7 +48,7 @@ function getReadingTime(post: any) {
         <div v-if="post.meta.type === 'speech'" class="pb-4 border-b border-b-gray-200 dark:border-b-gray-700">
           <div class="p-2 px-8 rounded-lg relative">
             <!-- 开始引号 -->
-            <div class="text-4xl leading-none font-serif select-none left-3 top-3 absolute">
+            <div class="text-muted text-4xl leading-none font-serif select-none left-3 top-3 absolute">
               "
             </div>
 
@@ -60,7 +60,7 @@ function getReadingTime(post: any) {
             </div>
 
             <!-- 结束引号 -->
-            <div class="text-4xl leading-none font-serif select-none rotate-180 transform bottom-3 right-40 absolute">
+            <div class="text-muted text-4xl leading-none font-serif select-none rotate-180 transform bottom-3 right-40 absolute">
               "
             </div>
           </div>
@@ -80,18 +80,21 @@ function getReadingTime(post: any) {
         <article v-else class="pb-4 border-b border-gray-200 transition-all duration-200 dark:border-gray-700">
           <!-- 文章标题和元信息 -->
           <div class="mb-3">
-            <div class="mb-1 flex items-start justify-between">
-              <h2 class="text-body text-lg leading-tight font-semibold">
+            <div class="mb-1 flex items-center justify-between">
+              <h2 class="text-body text-2xl leading-tight font-semibold">
                 <a :href="post.path" class="link-subtle transition-colors hover:text-blue-600">
                   {{ post.title }}
                 </a>
               </h2>
-              <time class="text-muted text-sm ml-4 flex-shrink-0 whitespace-nowrap">
-                {{ formatDate(post.date) }}
-              </time>
-            </div>
-            <div class="text-muted text-xs">
-              {{ getReadingTime(post) }}
+              <div flex="~ gap-1.5" items-center>
+                <time class="text-muted text-sm ml-4 flex-shrink-0 whitespace-nowrap">
+                  {{ formatDate(post.date) }}
+                </time>
+                <div i-carbon:circle-solid text-muted text="1" />
+                <div class="text-muted text-sm">
+                  {{ getReadingTime(post) }}
+                </div>
+              </div>
             </div>
           </div>
 
