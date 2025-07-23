@@ -15,10 +15,25 @@ function formatDate(date: string | Date) {
 }
 
 // 获取阅读时间
-function getReadingTime(post: any) {
+function getReadingTime(content: string) {
+  const wordsPerMinute = 200
+  const textContent = content.replace(/<[^>]*>/g, '') // 移除HTML标签
+  const wordCount = textContent.split(/\s+/).length
+  const readingTime = Math.ceil(wordCount / wordsPerMinute)
+  return `${readingTime} min read`
+}
+
+function getPostReadingTime(post: any) {
   // 优先使用 frontmatter 中的 duration 字段
-  if (post.meta.duration) {
+  if (post.meta?.duration) {
     return post.meta.duration
+  }
+
+  // 计算基于文章内容的阅读时间
+  if (post.body) {
+    // 确保 body 是字符串类型
+    const bodyContent = typeof post.body === 'string' ? post.body : JSON.stringify(post.body)
+    return getReadingTime(bodyContent)
   }
 
   // 如果没有 duration，返回默认值
@@ -53,7 +68,7 @@ useHead({
         <div class="flex gap-1 items-center">
           <time>{{ formatDate(post.date) }}</time>
           <span>•</span>
-          <span>{{ getReadingTime(post) }}</span>
+          <span>{{ getPostReadingTime(post) }}</span>
         </div>
         <div v-if="post.tags && post.tags.length">
           Tagged:
@@ -93,8 +108,11 @@ useHead({
 
     <!-- 简洁的页脚 -->
     <footer class="pt-6">
-      <div class="text-muted text-sm">
-        <a href="/" class="link">← Back to home</a>
+      <div class="text-muted">
+        <a href="/" class="link-accent flex items-center hover:underline">
+          <span class="i-carbon-arrow-left mr-1" />
+          cd ..
+        </a>
       </div>
     </footer>
   </div>

@@ -49,6 +49,37 @@ a, button {
   animation: fade-in 0.6s ease-out both;
 }
 
+/* 更多动画效果 */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.4s ease-out both;
+}
+
 /* 减少动画偏好 */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -61,10 +92,49 @@ a, button {
   }
 }
 
+/* 响应式工具类 */
+@media (max-width: 767px) {
+  .sm\:hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:block {
+    display: block !important;
+  }
+}
+
 /* 打印样式 */
 @media print {
   body {
     background: white !important;
     color: black !important;
+  }
+  
+  /* 隐藏不必要的元素 */
+  header, footer, nav, .no-print {
+    display: none !important;
+  }
+  
+  /* 优化打印内容 */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+  
+  img {
+    break-inside: avoid;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  pre, blockquote {
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 }

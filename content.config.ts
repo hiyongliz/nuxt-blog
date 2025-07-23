@@ -7,9 +7,12 @@ export default defineContentConfig({
       type: 'page',
       // Define custom schema for docs collection
       schema: z.object({
-        tags: z.array(z.string()),
-        image: z.string(),
+        title: z.string(),
+        description: z.string().optional(),
+        tags: z.array(z.string()).optional(),
+        image: z.string().optional(),
         date: z.date(),
+        author: z.string().optional(),
       }),
     }),
   },

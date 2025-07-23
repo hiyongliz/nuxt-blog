@@ -29,8 +29,11 @@ useHead({
 
       <!-- 页脚返回链接 -->
       <footer class="pt-6">
-        <div class="text-muted text-sm">
-          <a href="/" class="link">← Back to home</a>
+        <div class="text-muted">
+          <a href="/" class="link-accent flex items-center hover:underline">
+            <span class="i-carbon-arrow-left mr-1" />
+            cd ..
+          </a>
         </div>
       </footer>
     </div>

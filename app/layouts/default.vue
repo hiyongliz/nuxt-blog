@@ -9,7 +9,7 @@ import DarkToggle from '~/components/DarkToggle.vue'
       <div class="py-4 container">
         <div class="flex items-center justify-between">
           <!-- 网站标题 -->
-          <h1 class="text-body text-4xl font-bold">
+          <h1 class="text-body text-4xl font-bold font-sans">
             <a href="/" class="link-subtle">Lazy's Webblog</a>
           </h1>
 

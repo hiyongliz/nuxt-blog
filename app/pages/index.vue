@@ -1,5 +1,15 @@
 <script setup lang="ts">
-const { data: posts } = await useAsyncData('blog', async () => {
+useHead({
+  title: 'Recent posts',
+  meta: [
+    { name: 'description', content: 'Browse our latest blog posts and articles.' },
+    { property: 'og:title', content: 'Recent posts' },
+    { property: 'og:description', content: 'Browse our latest blog posts and articles.' },
+    { name: 'twitter:card', content: 'summary' },
+  ],
+})
+
+const { data: posts } = await useAsyncData('blog-all', async () => {
   const allPosts = await queryCollection('blog').all()
   // 按日期降序排序（最新的在前）
   return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -16,10 +26,25 @@ function formatDate(date: string | Date) {
 }
 
 // 获取阅读时间
-function getReadingTime(post: any) {
+function getReadingTime(content: string) {
+  const wordsPerMinute = 200
+  const textContent = content.replace(/<[^>]*>/g, '') // 移除HTML标签
+  const wordCount = textContent.split(/\s+/).length
+  const readingTime = Math.ceil(wordCount / wordsPerMinute)
+  return `${readingTime} min read`
+}
+
+function getPostReadingTime(post: any) {
   // 优先使用 frontmatter 中的 duration 字段
-  if (post.meta.duration) {
+  if (post.meta?.duration) {
     return post.meta.duration
+  }
+
+  // 计算基于文章内容的阅读时间
+  if (post.body) {
+    // 确保 body 是字符串类型
+    const bodyContent = typeof post.body === 'string' ? post.body : JSON.stringify(post.body)
+    return getReadingTime(bodyContent)
   }
 
   // 如果没有 duration，返回默认值
@@ -39,34 +64,33 @@ function getReadingTime(post: any) {
     <!-- 文章列表 -->
     <div class="space-y-8">
       <article
-        v-for="(post, index) in posts"
+        v-for="post in posts"
         :key="post.id"
-        class="group animate-fade-in"
-        :style="{ animationDelay: `${index * 100}ms` }"
+        class="group"
       >
         <!-- 引言类型文章 -->
-        <div v-if="post.meta.type === 'speech'" class="pb-4 border-b border-b-gray-200 dark:border-b-gray-700">
-          <div class="p-2 px-8 rounded-lg relative">
+        <div v-if="post.meta.type === 'speech'" class="pb-6 border-b border-b-gray-200 dark:border-b-gray-700">
+          <div class="py-4 px-6 rounded-lg relative bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
             <!-- 开始引号 -->
-            <div class="text-muted text-4xl leading-none font-serif select-none left-3 top-3 absolute">
+            <div class="text-muted text-5xl leading-none font-serif select-none left-4 top-2 absolute">
               "
             </div>
 
             <!-- 引言内容 -->
-            <div class="relative z-10">
-              <div class="prose-sm text-gray-700 leading-normal italic prose dark:text-gray-300">
+            <div class="relative z-10 pt-2 pl-8">
+              <div class="prose text-gray-700 leading-normal italic prose dark:text-gray-300">
                 <ContentRenderer :value="post" />
               </div>
             </div>
 
             <!-- 结束引号 -->
-            <div class="text-muted text-4xl leading-none font-serif select-none rotate-180 transform bottom-3 right-40 absolute">
+            <div class="text-muted text-5xl leading-none font-serif select-none rotate-180 transform bottom-0 right-4 absolute">
               "
             </div>
           </div>
 
           <!-- 作者和日期信息 -->
-          <div class="text-sm text-gray-600 pl-6 text-left dark:text-gray-400">
+          <div class="text-sm text-gray-600 pl-2 text-left dark:text-gray-400 mt-2">
             <div class="text-gray-800 font-semibold dark:text-gray-200">
               — {{ post.meta.author || 'Anonymous' }}
             </div>
@@ -82,7 +106,7 @@ function getReadingTime(post: any) {
           <div class="mb-3">
             <div class="mb-1 flex items-center justify-between">
               <h2 class="text-body text-2xl leading-tight font-semibold">
-                <a :href="post.path" class="link-subtle transition-colors hover:text-blue-600" target="_self">
+                <a :href="post.path" class="link-accent transition-colors" target="_self">
                   {{ post.title }}
                 </a>
               </h2>
@@ -92,7 +116,7 @@ function getReadingTime(post: any) {
                 </time>
                 <div i-carbon:circle-solid text-muted text="1" />
                 <div class="text-muted text-sm">
-                  {{ getReadingTime(post) }}
+                  {{ getPostReadingTime(post) }}
                 </div>
               </div>
             </div>
@@ -100,11 +124,12 @@ function getReadingTime(post: any) {
 
           <!-- 文章封面图片 -->
           <div v-if="post.image" class="mb-4">
-            <a :href="post.path" class="block">
+            <a :href="post.path" class="block rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg">
               <img
                 :src="post.image"
                 :alt="post.title"
                 class="border border-gray-200 h-48 w-full transition-all duration-200 object-cover dark:border-gray-700 hover:opacity-90 md:h-56"
+                loading="lazy"
               >
             </a>
           </div>
@@ -120,7 +145,7 @@ function getReadingTime(post: any) {
               <span
                 v-for="tag in post.tags.slice(0, 3)"
                 :key="tag"
-                class="text-xs text-gray-700 px-2 py-1 bg-gray-100 dark:text-gray-300 dark:bg-gray-800"
+                class="text-xs text-gray-700 px-2 py-1 bg-gray-100 rounded dark:text-gray-300 dark:bg-gray-800"
               >
                 {{ tag }}
               </span>
