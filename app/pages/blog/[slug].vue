@@ -106,7 +106,6 @@ useHead({
       <ContentRenderer :value="post" />
     </article>
 
-    <!-- 简洁的页脚 -->
     <footer class="pt-6">
       <div class="text-muted">
         <a href="/" class="link-accent flex items-center hover:underline">
@@ -115,6 +114,24 @@ useHead({
         </a>
       </div>
     </footer>
+
+    <!-- Giscus 评论系统 -->
+    <div class="mt-8">
+      <ClientOnly>
+        <Giscus
+          repo="hiyongliz/nuxt-blog"
+          repo-id="R_kgDOPQHqtg"
+          category="Announcements"
+          category-id="DIC_kwDOPQHqts4CtUHF"
+          mapping="pathname"
+          strict="0"
+          reactions-enabled="1"
+          emit-metadata="0"
+          input-position="bottom"
+          lang="zh-CN"
+        />
+      </ClientOnly>
+    </div>
   </div>
 
   <!-- 加载状态 -->

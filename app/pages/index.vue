@@ -1,6 +1,5 @@
 <script setup lang="ts">
 useHead({
-  title: 'Recent posts',
   meta: [
     { name: 'description', content: 'Browse our latest blog posts and articles.' },
     { property: 'og:title', content: 'Recent posts' },
@@ -70,15 +69,15 @@ function getPostReadingTime(post: any) {
       >
         <!-- 引言类型文章 -->
         <div v-if="post.meta.type === 'speech'" class="pb-6 border-b border-b-gray-200 dark:border-b-gray-700">
-          <div class="py-4 px-6 rounded-lg relative bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+          <div class="px-6 py-4 border border-gray-200 rounded-lg bg-gray-50 relative dark:border-gray-700 dark:bg-gray-800/50">
             <!-- 开始引号 -->
             <div class="text-muted text-5xl leading-none font-serif select-none left-4 top-2 absolute">
               "
             </div>
 
             <!-- 引言内容 -->
-            <div class="relative z-10 pt-2 pl-8">
-              <div class="prose text-gray-700 leading-normal italic prose dark:text-gray-300">
+            <div class="pl-8 pt-2 relative z-10">
+              <div class="text-gray-700 leading-normal italic prose prose dark:text-gray-300">
                 <ContentRenderer :value="post" />
               </div>
             </div>
@@ -90,7 +89,7 @@ function getPostReadingTime(post: any) {
           </div>
 
           <!-- 作者和日期信息 -->
-          <div class="text-sm text-gray-600 pl-2 text-left dark:text-gray-400 mt-2">
+          <div class="text-sm text-gray-600 mt-2 pl-2 text-left dark:text-gray-400">
             <div class="text-gray-800 font-semibold dark:text-gray-200">
               — {{ post.meta.author || 'Anonymous' }}
             </div>
@@ -124,7 +123,7 @@ function getPostReadingTime(post: any) {
 
           <!-- 文章封面图片 -->
           <div v-if="post.image" class="mb-4">
-            <a :href="post.path" class="block rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg">
+            <a :href="post.path" class="rounded-lg block transition-all duration-300 overflow-hidden hover:shadow-lg">
               <img
                 :src="post.image"
                 :alt="post.title"
@@ -145,7 +144,7 @@ function getPostReadingTime(post: any) {
               <span
                 v-for="tag in post.tags.slice(0, 3)"
                 :key="tag"
-                class="text-xs text-gray-700 px-2 py-1 bg-gray-100 rounded dark:text-gray-300 dark:bg-gray-800"
+                class="text-xs text-gray-700 px-2 py-1 rounded bg-gray-100 dark:text-gray-300 dark:bg-gray-800"
               >
                 {{ tag }}
               </span>
