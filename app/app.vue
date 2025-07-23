@@ -8,7 +8,7 @@ useHead({
 
 <template>
   <NuxtLoadingIndicator color="#4ade80" :height="2" />
-  <VitePwaManifest />
+  <!-- <VitePwaManifest /> -->
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -21,7 +21,10 @@ body,
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   line-height: 1.6;
 }
 
@@ -32,7 +35,9 @@ html.dark {
 body {
   background: var(--bg);
   color: var(--fg);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 /* 简洁的加载指示器 */
