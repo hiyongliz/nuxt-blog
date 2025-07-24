@@ -90,7 +90,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/'],
-      ignore: ['/hi'],
+      ignore: ['/404', '/500'],
     },
     // 安全头设置
     routeRules: {
