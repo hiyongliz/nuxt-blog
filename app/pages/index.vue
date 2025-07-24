@@ -38,7 +38,7 @@ const { data: posts } = await useAsyncData('blog-all', async () => {
       >
         <!-- 引言类型文章 -->
         <div
-          v-if="post.meta.type === 'speech'"
+          v-if="post.type === 'speech'"
           class="pb-6" :class="[
             index < posts.length - 1 ? 'border-b border-b-gray-200 dark:border-b-gray-700' : '',
           ]"
@@ -63,9 +63,9 @@ const { data: posts } = await useAsyncData('blog-all', async () => {
           </div>
 
           <!-- 作者和日期信息 -->
-          <div class="text-sm text-gray-600 mt-2 pl-2 text-left dark:text-gray-400">
+          <div class="text-sm text-gray-600 mt-2 pl-1 text-left dark:text-gray-400" flex="~" items-center justify-between>
             <div class="text-gray-800 font-semibold dark:text-gray-200">
-              — {{ post.meta.author || 'Anonymous' }}
+              — {{ post.author || 'Anonymous' }}
             </div>
             <div class="text-xs opacity-75">
               {{ formatDate(post.date) }}
