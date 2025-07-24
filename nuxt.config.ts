@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
-    // '@vite-pwa/nuxt',
     '@nuxt/eslint',
     '@nuxt/content',
     '@nuxtjs/mdc',
@@ -44,7 +43,7 @@ export default defineNuxtConfig({
   },
 
   content: {
-    experimental: { nativeSqlite: true },
+    experimental: { nativeSqlite: false },
     build: {
       markdown: {
         toc: {
@@ -75,8 +74,6 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    // when using generate, payload js assets included in sw precache manifest
-    // but missing on offline, disabling extraction it until fixed
     payloadExtraction: false,
     renderJsonPayloads: true,
     typedPages: true,
@@ -109,5 +106,4 @@ export default defineNuxtConfig({
   gtag: {
     id: 'G-XXH0BFB7CB',
   },
-  // pwa,
 })

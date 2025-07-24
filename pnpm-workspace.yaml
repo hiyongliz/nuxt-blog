@@ -1,10 +1,16 @@
 packages: []
+
 catalog:
   '@iconify-json/oi': ^1.2.1
   '@nuxt-themes/docus': ^1.15.1
   '@nuxt-themes/typography': ^1.0.1
   '@nuxt/content': ^3.6.3
   '@nuxtjs/mdc': ^0.17.2
+  '@vue/test-utils': ^2.4.6
+  happy-dom: ^18.0.1
+  nuxt-gtag: ^3.0.3
+  vitest: ^3.2.4
+
 catalogs:
   build:
     '@nuxt/devtools': ^2.6.2
@@ -33,7 +39,9 @@ catalogs:
   icons:
     '@iconify-json/carbon': ^1.2.10
     '@iconify-json/twemoji': ^1.2.2
+
 onlyBuiltDependencies:
   - '@parcel/watcher'
+  - better-sqlite3
   - esbuild
   - unrs-resolver

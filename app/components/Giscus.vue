@@ -33,12 +33,13 @@ const colorMode = useColorMode()
 const giscusEl = ref<HTMLElement | null>(null)
 
 // 动态加载 Giscus 脚本
-const loadGiscus = () => {
-  if (!giscusEl.value) return
-  
+function loadGiscus() {
+  if (!giscusEl.value)
+    return
+
   // 清空容器
   giscusEl.value.innerHTML = ''
-  
+
   // 创建脚本元素
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
@@ -49,7 +50,8 @@ const loadGiscus = () => {
   script.setAttribute('data-category', props.category)
   script.setAttribute('data-category-id', props.categoryId)
   script.setAttribute('data-mapping', props.mapping)
-  if (props.term) script.setAttribute('data-term', props.term)
+  if (props.term)
+    script.setAttribute('data-term', props.term)
   script.setAttribute('data-theme', colorMode.value === 'dark' ? 'dark' : 'light')
   script.setAttribute('data-strict', props.strict)
   script.setAttribute('data-reactions-enabled', props.reactionsEnabled)
@@ -57,7 +59,7 @@ const loadGiscus = () => {
   script.setAttribute('data-input-position', props.inputPosition)
   script.setAttribute('data-lang', props.lang)
   script.setAttribute('data-loading', props.loading)
-  
+
   // 添加到容器
   giscusEl.value.appendChild(script)
 }
@@ -73,7 +75,8 @@ watch(
         { giscus: { setConfig: { theme: newMode === 'dark' ? 'dark' : 'light' } } },
         'https://giscus.app',
       )
-    } else {
+    }
+    else {
       // 如果 iframe 不存在，重新加载 Giscus
       loadGiscus()
     }
@@ -88,7 +91,7 @@ onMounted(() => {
 
 <template>
   <div class="giscus-wrapper">
-    <div ref="giscusEl" class="giscus-container"></div>
+    <div ref="giscusEl" class="giscus-container" />
   </div>
 </template>
 

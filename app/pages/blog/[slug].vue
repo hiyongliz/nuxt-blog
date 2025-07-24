@@ -1,47 +1,14 @@
 <script setup lang="ts">
-const slug = useRoute().params.slug
-const { data: post } = await useAsyncData(`blog-${slug}`, () => {
-  return queryCollection('blog').path(`/blog/${slug}`).first()
-})
-
+import type { BlogPost } from '~/types/blog'
+// Import shared utilities
+import { formatDate, getPostReadingTime } from '~/utils/blogHelpers'
 // Import the composable
 const { generateAltText } = useAccessibleImage()
 
-// 格式化日期
-function formatDate(date: string | Date) {
-  const d = new Date(date)
-  return d.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-}
-
-// 获取阅读时间
-function getReadingTime(content: string) {
-  const wordsPerMinute = 200
-  const textContent = content.replace(/<[^>]*>/g, '') // 移除HTML标签
-  const wordCount = textContent.split(/\s+/).length
-  const readingTime = Math.ceil(wordCount / wordsPerMinute)
-  return `${readingTime} min read`
-}
-
-function getPostReadingTime(post: any) {
-  // 优先使用 frontmatter 中的 duration 字段
-  if (post.meta?.duration) {
-    return post.meta.duration
-  }
-
-  // 计算基于文章内容的阅读时间
-  if (post.body) {
-    // 确保 body 是字符串类型
-    const bodyContent = typeof post.body === 'string' ? post.body : JSON.stringify(post.body)
-    return getReadingTime(bodyContent)
-  }
-
-  // 如果没有 duration，返回默认值
-  return ''
-}
+const slug = useRoute().params.slug
+const { data: post } = await useAsyncData<BlogPost>(`blog-${slug}`, () => {
+  return queryCollection('blog').path(`/blog/${slug}`).first()
+})
 
 // SEO 设置
 useHead({
@@ -63,21 +30,26 @@ useHead({
   <div v-if="post">
     <!-- 文章头部 -->
     <header class="mb-8">
-      <h1 class="text-body text-2xl leading-tight font-bold mb-4 md:text-3xl">
+      <h1 class="text-2xl text-body leading-tight font-bold mb-4 md:text-3xl">
         {{ post.title }}
       </h1>
 
-      <div class="text-muted text-sm mb-6 space-y-2">
+      <div class="text-sm text-muted mb-6 space-y-2">
         <div class="flex gap-1 items-center">
           <time>{{ formatDate(post.date) }}</time>
           <span>•</span>
           <span>{{ getPostReadingTime(post) }}</span>
         </div>
-        <div v-if="post.tags && post.tags.length">
-          Tagged:
-          <span v-for="(tag, index) in post.tags" :key="tag">
-            <span class="font-medium">{{ tag }}</span><span v-if="index < post.tags.length - 1">, </span>
-          </span>
+        <div v-if="post.tags && post.tags.length" class="flex flex-wrap gap-2 items-center">
+          <span class="text-xs text-muted">Tagged:</span>
+          <NuxtLink
+            v-for="tag in post.tags"
+            :key="tag"
+            :to="`/tags/${encodeURIComponent(tag)}`"
+            class="text-xs text-gray-700 px-2 py-1 rounded bg-gray-100 transition-colors dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            {{ tag }}
+          </NuxtLink>
         </div>
       </div>
 
@@ -111,7 +83,7 @@ useHead({
 
     <footer class="pt-6">
       <div class="text-muted">
-        <a href="/" class="link-accent flex items-center hover:underline">
+        <a href="/" class="link-accent flex items-center">
           <span class="i-carbon-arrow-left mr-1" />
           cd ..
         </a>

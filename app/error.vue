@@ -1,29 +1,29 @@
 <script setup lang="ts">
 // 获取错误信息
 const props = defineProps({
-  error: Object
+  error: Object,
 })
 
 // 根据错误状态码设置不同的消息
-const getErrorMessage = (statusCode: number) => {
+function getErrorMessage(statusCode: number) {
   switch (statusCode) {
     case 404:
       return {
         title: 'Page not found',
         message: 'The page you\'re looking for doesn\'t exist or has been moved.',
-        suggestion: 'Check the URL or browse from the homepage.'
+        suggestion: 'Check the URL or browse from the homepage.',
       }
     case 500:
       return {
         title: 'Server error',
         message: 'Something went wrong on our end.',
-        suggestion: 'Please try again later or contact support if the problem persists.'
+        suggestion: 'Please try again later or contact support if the problem persists.',
       }
     default:
       return {
         title: 'Something went wrong',
         message: 'An unexpected error occurred.',
-        suggestion: 'Please try again or go back to the homepage.'
+        suggestion: 'Please try again or go back to the homepage.',
       }
   }
 }
@@ -35,38 +35,38 @@ const errorInfo = getErrorMessage(statusCode)
 useHead({
   title: `${statusCode} - ${errorInfo.title} | Lazy's Webblog`,
   meta: [
-    { name: 'robots', content: 'noindex' }
-  ]
+    { name: 'robots', content: 'noindex' },
+  ],
 })
 
 // 清除错误状态的函数
 const handleError = () => clearError({ redirect: '/' })
 
 // 重新加载页面的函数
-const reloadPage = () => {
-  if (process.client) {
+function reloadPage() {
+  if (import.meta.client) {
     window.location.reload()
   }
 }
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
-    <div class="container max-w-2xl text-center">
+  <div class="bg-white flex min-h-screen items-center justify-center dark:bg-gray-900">
+    <div class="container text-center max-w-2xl">
       <!-- 错误状态码 -->
       <div class="mb-8">
-        <h1 class="text-6xl md:text-8xl font-bold text-gray-300 dark:text-gray-700 mb-4">
+        <h1 class="text-6xl text-gray-300 font-bold mb-4 md:text-8xl dark:text-gray-700">
           {{ statusCode }}
         </h1>
-        <div class="w-16 h-px bg-gray-300 dark:bg-gray-700 mx-auto" />
+        <div class="mx-auto bg-gray-300 h-px w-16 dark:bg-gray-700" />
       </div>
 
       <!-- 错误信息 -->
       <div class="mb-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-body mb-4">
+        <h2 class="text-2xl text-body font-bold mb-4 md:text-3xl">
           {{ errorInfo.title }}
         </h2>
-        <p class="text-muted text-lg mb-2">
+        <p class="text-lg text-muted mb-2">
           {{ errorInfo.message }}
         </p>
         <p class="text-muted">
@@ -75,38 +75,38 @@ const reloadPage = () => {
       </div>
 
       <!-- 操作按钮 -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div class="flex flex-col gap-4 items-center justify-center sm:flex-row">
         <button
-          @click="handleError"
           class="btn-primary"
           aria-label="Go to homepage"
+          @click="handleError"
         >
           Go to homepage
         </button>
 
         <button
           v-if="statusCode === 500"
-          @click="reloadPage"
           class="btn text-muted hover:text-body"
           aria-label="Try again"
+          @click="reloadPage"
         >
           Try again
         </button>
 
         <button
           v-else
-          @click="$router.go(-1)"
           class="btn text-muted hover:text-body"
           aria-label="Go back to previous page"
+          @click="$router.go(-1)"
         >
           ← Go back
         </button>
       </div>
 
       <!-- 额外信息（仅在开发环境显示） -->
-      <div v-if="$dev && props.error" class="mt-12 p-4 bg-gray-50 dark:bg-gray-800 rounded border text-left">
+      <div v-if="$dev && props.error" class="mt-12 p-4 text-left border rounded bg-gray-50 dark:bg-gray-800">
         <details>
-          <summary class="cursor-pointer text-sm font-medium text-muted mb-2">
+          <summary class="text-sm text-muted font-medium mb-2 cursor-pointer">
             Debug information (dev only)
           </summary>
           <pre class="text-xs text-muted overflow-auto">{{ props.error }}</pre>

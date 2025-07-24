@@ -144,7 +144,8 @@
   font-weight: inherit;
 }
 
-.prose ul, .prose ol {
+.prose ul,
+.prose ol {
   margin: 1.25em 0;
   padding-left: 1.5em;
 }
@@ -200,9 +201,13 @@
 .prose img {
   margin: 1.5em auto;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .dark .prose img {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }

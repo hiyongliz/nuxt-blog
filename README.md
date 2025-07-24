@@ -69,6 +69,7 @@ pnpm run preview
 Blog posts are written in Markdown and stored in the `content/blog/` directory. Each post should have a frontmatter section with metadata like title, date, and description.
 
 Example post structure:
+
 ```markdown
 ---
 title: My Blog Post
@@ -86,6 +87,7 @@ Content of the blog post in Markdown format...
 This blog can be deployed to any static hosting service like Vercel, Netlify, or GitHub Pages.
 
 For a simple deployment to Vercel:
+
 1. Push your code to a GitHub repository
 2. Create a new project on Vercel
 3. Connect your GitHub repository

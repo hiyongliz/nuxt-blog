@@ -4,7 +4,7 @@ date: 2025-07-23
 description: 用于测试表格样式的文章
 image: https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop&crop=entropy&auto=format&q=80
 imageCaption: VS Code interface showing color scheme settings
-tags: ['test', 'table']
+tags: [test, table]
 ---
 
 # 表格样式测试

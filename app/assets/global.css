@@ -45,7 +45,8 @@ img {
 }
 
 /* 基础过渡 */
-a, button {
+a,
+button {
   transition: color 0.2s ease;
 }
 
@@ -127,28 +128,37 @@ a, button {
     background: white !important;
     color: black !important;
   }
-  
+
   /* 隐藏不必要的元素 */
-  header, footer, nav, .no-print {
+  header,
+  footer,
+  nav,
+  .no-print {
     display: none !important;
   }
-  
+
   /* 优化打印内容 */
-  a[href^="http"]:after {
-    content: " (" attr(href) ")";
+  a[href^='http']:after {
+    content: ' (' attr(href) ')';
     font-size: 0.8em;
   }
-  
+
   img {
     break-inside: avoid;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     page-break-after: avoid;
     break-after: avoid;
   }
-  
-  pre, blockquote {
+
+  pre,
+  blockquote {
     border: 1px solid #ccc;
     page-break-inside: avoid;
     break-inside: avoid;

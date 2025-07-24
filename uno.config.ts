@@ -13,9 +13,9 @@ import {
 export default defineConfig({
   shortcuts: [
     // 简单的链接样式
-    ['link', 'text-blue-500 hover:text-blue-800 underline decoration-1 underline-offset-2'],
-    ['link-subtle', 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 no-underline hover:underline'],
-    ['link-accent', 'text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 border-b border-dotted border-current hover:border-solid transition-colors duration-200'],
+    ['link', 'text-blue-500 hover:text-blue-800 transition-colors duration-200'],
+    ['link-subtle', 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200'],
+    ['link-accent', 'text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200'],
 
     // 简单的按钮样式
     ['btn', 'px-4 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200'],
@@ -33,13 +33,9 @@ export default defineConfig({
     ['text-subtle', 'text-gray-500 dark:text-gray-500'],
     ['text-body', 'text-gray-900 dark:text-gray-100'],
 
-    // 卡片样式（已移除）
-    // ['card', 'border border-gray-200 rounded-lg p-6 shadow-sm transition-shadow duration-200 dark:border-gray-700 hover:shadow-md dark:hover:shadow-lg'],
-    // ['card-hover', 'border border-gray-200 rounded-lg p-6 shadow-sm transition-all duration-300 dark:border-gray-700 hover:shadow-lg hover:-translate-y-1'],
-
     // 简单的分割线
     ['divider', 'border-t border-gray-200 dark:border-gray-700'],
-    
+
     // 响应式工具类
     ['responsive-grid', 'grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'],
     ['center-flex', 'flex items-center justify-center'],

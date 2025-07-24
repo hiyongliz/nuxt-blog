@@ -14,7 +14,7 @@ useHead({
   <div>
     <!-- 页面标题 -->
     <header class="mb-8">
-      <h1 class="text-body text-2xl font-bold mb-4 md:text-3xl">
+      <h1 class="text-3xl text-body font-bold mb-3 md:text-4xl">
         About
       </h1>
     </header>
@@ -30,7 +30,7 @@ useHead({
       <!-- 页脚返回链接 -->
       <footer class="pt-6">
         <div class="text-muted">
-          <a href="/" class="link-accent flex items-center hover:underline">
+          <a href="/" class="link-accent flex items-center">
             <span class="i-carbon-arrow-left mr-1" />
             cd ..
           </a>
