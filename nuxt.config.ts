@@ -88,9 +88,34 @@ export default defineNuxtConfig({
       },
     },
     prerender: {
-      crawlLinks: false,
+      crawlLinks: true,
       routes: ['/'],
       ignore: ['/hi'],
+    },
+    // 安全头设置
+    routeRules: {
+      '/**': {
+        headers: {
+          'X-Content-Type-Options': 'nosniff',
+          'X-Frame-Options': 'DENY',
+          'X-XSS-Protection': '1; mode=block',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        },
+      },
+      // 静态资源缓存
+      '/assets/**': {
+        headers: {
+          'Cache-Control': 'public, max-age=31536000, immutable',
+        },
+      },
+      // API 路由安全
+      '/api/**': {
+        headers: {
+          'X-Content-Type-Options': 'nosniff',
+          'X-Frame-Options': 'DENY',
+        },
+      },
     },
   },
 
