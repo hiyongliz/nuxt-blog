@@ -1,6 +1,9 @@
 <script setup lang="ts">
 const color = useColorMode()
 
+// Import the composable
+const { getActionLabel } = useAriaAttributes()
+
 useHead({
   meta: [{
     id: 'theme-color',
@@ -19,6 +22,8 @@ function toggleDark() {
     class="p-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
     @click="toggleDark"
     :aria-label="color.value === 'dark' ? '切换到浅色模式' : '切换到深色模式'"
+    :aria-pressed="color.value === 'dark'"
+    role="switch"
   >
     <div class="i-carbon-sun dark:i-carbon-moon w-4 h-4" />
   </button>

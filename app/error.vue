@@ -79,6 +79,7 @@ const reloadPage = () => {
         <button
           @click="handleError"
           class="btn-primary"
+          aria-label="Go to homepage"
         >
           Go to homepage
         </button>
@@ -87,6 +88,7 @@ const reloadPage = () => {
           v-if="statusCode === 500"
           @click="reloadPage"
           class="btn text-muted hover:text-body"
+          aria-label="Try again"
         >
           Try again
         </button>
@@ -95,6 +97,7 @@ const reloadPage = () => {
           v-else
           @click="$router.go(-1)"
           class="btn text-muted hover:text-body"
+          aria-label="Go back to previous page"
         >
           ← Go back
         </button>

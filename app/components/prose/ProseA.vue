@@ -18,6 +18,7 @@ const props = defineProps({
   <NuxtLink
     :href="props.href"
     :target="props.target"
+    :external="props.target === '_blank'"
   >
     <slot />
   </NuxtLink>

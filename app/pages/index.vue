@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// Import the composable
+const { generateAltText } = useAccessibleImage()
+
 useHead({
   meta: [
     { name: 'description', content: 'Browse our latest blog posts and articles.' },
@@ -126,7 +129,7 @@ function getPostReadingTime(post: any) {
             <a :href="post.path" class="rounded-lg block transition-all duration-300 overflow-hidden hover:shadow-lg">
               <img
                 :src="post.image"
-                :alt="post.title"
+                :alt="generateAltText(post.title, post.imageCaption)"
                 class="border border-gray-200 h-48 w-full transition-all duration-200 object-cover dark:border-gray-700 hover:opacity-90 md:h-56"
                 loading="lazy"
               >

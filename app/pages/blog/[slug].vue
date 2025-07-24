@@ -4,6 +4,9 @@ const { data: post } = await useAsyncData(`blog-${slug}`, () => {
   return queryCollection('blog').path(`/blog/${slug}`).first()
 })
 
+// Import the composable
+const { generateAltText } = useAccessibleImage()
+
 // 格式化日期
 function formatDate(date: string | Date) {
   const d = new Date(date)
@@ -83,7 +86,7 @@ useHead({
         <div class="border-b border-t border-gray-200 bg-gray-100 shadow-sm relative overflow-hidden sm:border dark:border-gray-700 sm:rounded-lg dark:bg-gray-800">
           <img
             :src="post.image"
-            :alt="post.title"
+            :alt="generateAltText(post.title, post.imageCaption)"
             class="h-48 w-full transition-transform duration-300 object-cover lg:h-96 md:h-80 sm:h-64 hover:scale-105"
             loading="lazy"
           >
