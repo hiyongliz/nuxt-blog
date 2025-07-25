@@ -109,6 +109,12 @@ export default defineNuxtConfig({
           'Cache-Control': 'public, max-age=31536000, immutable',
         },
       },
+      // 图片资源路径
+      '/images/**': {
+        headers: {
+          'Cache-Control': 'public, max-age=31536000, immutable',
+        },
+      },
       // API 路由安全
       '/api/**': {
         headers: {

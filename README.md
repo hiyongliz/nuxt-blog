@@ -61,6 +61,7 @@ pnpm run preview
 ├── content/            # Markdown content
 │   └── blog/           # Blog posts
 ├── public/             # Static assets
+│   └── images/         # Blog post images (accessible via /images/filename)
 └── nuxt.config.ts      # Nuxt configuration
 ```
 
@@ -80,6 +81,9 @@ description: A brief description of the post
 # My Blog Post
 
 Content of the blog post in Markdown format...
+
+You can reference images from the `public/images` directory using:
+![Alt text](/images/filename.png)
 ```
 
 ## Deployment
