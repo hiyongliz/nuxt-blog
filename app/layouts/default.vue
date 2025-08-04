@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DarkToggle from '~/components/DarkToggle.vue'
+import DarkToggle from '~/components/DarkToggle.vue';
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import DarkToggle from '~/components/DarkToggle.vue'
         <div class="flex items-center justify-between">
           <!-- 网站标题 -->
           <h1 class="text-4xl text-body font-bold font-sans">
-            <a href="/" class="link-subtle">Lazy's Webblog</a>
+            <a href="/" class="link-subtle">Lazy's Weblog</a>
           </h1>
 
           <!-- 简单的导航 -->
@@ -37,7 +37,7 @@ import DarkToggle from '~/components/DarkToggle.vue'
       <div class="container py-6">
         <div class="text-sm text-muted text-center">
           <p>
-            © 2025 Lazy's Webblog •
+            © 2025 Lazy's Weblog •
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="link">
               CC BY-NC-SA 4.0
             </a>

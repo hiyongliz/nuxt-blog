@@ -1,8 +1,8 @@
-export const appName = 'Lazy\'s Webblog'
+export const appName = 'Lazy\'s Weblog'
 export const appDescription = 'A personal blog sharing thoughts, ideas, and technical insights on web development, programming, and technology.'
-export const appUrl = 'https://yourdomain.com' // 替换为实际域名
+export const appUrl = 'https://blog.lazylazylazy.online' // 替换为实际域名
 export const appAuthor = 'Lazy'
-export const appEmail = 'hello@yourdomain.com' // 替换为实际邮箱
+export const appEmail = 'zhizhiyongyonglazy@gmail.com' // 替换为实际邮箱
 
 // 社交媒体链接
 export const socialLinks = {
