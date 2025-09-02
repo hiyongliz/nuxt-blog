@@ -4,10 +4,12 @@ import type { BlogPost } from '~/types/blog'
 import { formatDate, getPostReadingTime } from '~/utils/blogHelpers'
 // Import the composable
 const { generateAltText } = useAccessibleImage()
+const { initCodeCopy } = useCodeCopy()
 
-const slug = useRoute().params.slug
+const route = useRoute()
+const slug = Array.isArray(route.params.slug) ? route.params.slug[0] : route.params.slug || ''
 const { data: post } = await useAsyncData<BlogPost>(`blog-${slug}`, () => {
-  return queryCollection('blog').path(`/blog/${slug}`).first()
+  return queryCollection('blog').path(`/blog/${slug}`).first() as Promise<BlogPost>
 })
 
 // SEO 设置
@@ -23,6 +25,11 @@ useHead({
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:image', content: post.value?.image },
   ],
+})
+
+// 初始化代码复制功能
+onMounted(() => {
+  initCodeCopy()
 })
 </script>
 

@@ -127,14 +127,93 @@
   border-radius: 0.5rem;
   padding: 1rem;
   overflow-x: auto;
-  margin: 1.5em 0;
+  margin: 1.5em 0 1em 0;
   font-size: 0.875em;
   line-height: 1.714;
+  position: relative;
+}
+
+.prose pre:hover .copy-button {
+  opacity: 1;
+}
+
+/* 复制按钮样式 */
+.prose .copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  opacity: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.prose .copy-button:hover {
+  background-color: #e5e7eb;
+}
+
+.prose .copy-button:focus {
+  opacity: 1;
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+.prose .copy-button.copied {
+  background-color: #dcfce7;
+  color: #16a34a;
+  border-color: #bbf7d0;
+}
+
+.prose .copy-button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.prose .copy-text {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .prose .copy-text {
+    display: inline;
+  }
+}
+
+/* 小屏幕上始终显示按钮 */
+@media (max-width: 640px) {
+  .prose .copy-button {
+    opacity: 1;
+  }
 }
 
 .dark .prose pre {
   background-color: #1f2937;
   border-color: #374151;
+}
+
+/* 暗色模式下的复制按钮样式 */
+.dark .prose .copy-button {
+  background-color: #374151;
+  color: #d1d5db;
+  border-color: #4b5563;
+}
+
+.dark .prose .copy-button:hover {
+  background-color: #4b5563;
+}
+
+.dark .prose .copy-button.copied {
+  background-color: #064e3b;
+  color: #6ee7b7;
+  border-color: #047857;
 }
 
 .prose pre code {
