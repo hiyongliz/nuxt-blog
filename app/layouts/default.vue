@@ -10,7 +10,7 @@ import DarkToggle from '~/components/DarkToggle.vue';
         <div class="flex items-center justify-between">
           <!-- 网站标题 -->
           <h1 class="text-4xl text-body font-bold font-sans">
-            <a href="/" class="link-subtle">Lazy's Weblog</a>
+            <a href="/" class="link-subtle">Łazy's Weblog</a>
           </h1>
 
           <!-- 简单的导航 -->
